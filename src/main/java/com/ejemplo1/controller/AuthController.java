@@ -18,10 +18,10 @@ public class AuthController {
     @Autowired
     private JWTUtil jwtUtil;
 
+    
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
     public String login(@RequestBody Usuario usuario) {
-        System.out.println("xxxxxxxxxxxxxxxxxx");
-        System.out.println(usuario.getEmail());
+       
         Usuario userLogger = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
         if (userLogger != null) {
           String tokenJWT =  jwtUtil.create(String.valueOf(userLogger.getUser_id()), userLogger.getEmail());

@@ -1,6 +1,5 @@
 package com.ejemplo1.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ejemplo1.dao.UsuarioDao;
@@ -30,23 +29,7 @@ public class UsuarioController {
     @Autowired
     private JWTUtil jwtUtil; 
     
-    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
-    public ArrayList<Usuario> getUsuario(@PathVariable Long id)  {
-       ArrayList<Usuario> usuarios = new ArrayList<>();
-       List<String> lista = new  ArrayList<>();
-        lista.add("hola");
-        lista.add("chau");
-        lista.add("pito");
-       usuarios.add(new Usuario(1, "email", "password"));
-       usuarios.add(new Usuario(2, "email", "password"));
-       usuarios.add(new Usuario(3, "email", "password"));
-
-       for (Usuario us : usuarios) {
-           System.out.println(us.getEmail());
-       }
-        return usuarios;
-    }
-
+    
     @RequestMapping(value = "api/usuarios", method = RequestMethod.GET)
     public List<Usuario> getUsuarios(@RequestHeader(value = "Authorization") String token) {
     if(!validarToken(token) ){
